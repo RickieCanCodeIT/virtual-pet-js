@@ -5,6 +5,7 @@ export default class VirtualPet {
         this.description = description;
         this.hunger = hunger;
         this.thirst = thirst;
+        this.imageUrl = "https://cataas.com/cat/says/"+ name + "?size=150&color=blue";
     }
 
     feed() {
