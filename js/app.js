@@ -11,15 +11,15 @@ const waterAllPetsButton = document.querySelector(".waterAllPets");
 const virtualPetShelter = [];
 
 
-feedAllPetsButton.addEventListener('click',()=>{
-    virtualPetShelter.forEach(element =>{
+feedAllPetsButton.addEventListener('click', () => {
+    virtualPetShelter.forEach(element => {
         element.virtualPet.feed();
     })
     updatePetsUi(virtualPetShelter);
 });
 
-waterAllPetsButton.addEventListener('click',()=>{
-    virtualPetShelter.forEach(element =>{
+waterAllPetsButton.addEventListener('click', () => {
+    virtualPetShelter.forEach(element => {
         element.virtualPet.water();
     })
     updatePetsUi(virtualPetShelter);
@@ -36,7 +36,7 @@ makePet("Vlad", "Cool brown cat", 50, 50);
 function makePet(name, description, hunger, thirst, imageUrl) {
     const tempPet = new VirtualPet(name, description, hunger, thirst, imageUrl);
     const petContainer = document.createElement("div");
-    let tempPetUiContext = new VirtualPetUiContext(tempPet,petContainer);
+    let tempPetUiContext = new VirtualPetUiContext(tempPet, petContainer);
     virtualPetShelter.push(tempPetUiContext);
     petContainer.style.backgroundColor = getRandomColor();
 
@@ -45,7 +45,7 @@ function makePet(name, description, hunger, thirst, imageUrl) {
     petImage.style.height = "200px";
     petImage.alt = tempPet.description;
     petContainer.append(petImage);
-    
+
     const petName = document.createElement("h1");
     petName.innerText = tempPet.name;
     petContainer.append(petName);
@@ -75,7 +75,7 @@ function makePet(name, description, hunger, thirst, imageUrl) {
     const drinkButton = document.createElement("button");
     drinkButton.innerText = "Water your pet";
     petContainer.append(drinkButton);
-    drinkButton.addEventListener('click', ()=> {
+    drinkButton.addEventListener('click', () => {
         tempPet.water();
         petThirst.innerText = "Thirst: " + tempPet.thirst;
     });
@@ -84,7 +84,7 @@ function makePet(name, description, hunger, thirst, imageUrl) {
 
 
 function getRandomColor() {
-    var letters = '0123456789ABCDEF';
+    var letters = '6789ABCDEF';
     var color = '#';
     for (var i = 0; i < 6; i++) {
         color += letters[Math.floor(Math.random() * 16)];
@@ -92,9 +92,9 @@ function getRandomColor() {
     return color;
 }
 
-function updatePetsUi(petContainerArray){
+function updatePetsUi(petContainerArray) {
     petContainerArray.forEach(element => {
-        element.petContainer.querySelector(".petThirst").innerText ="Thirst: " + element.virtualPet.thirst;
-        element.petContainer.querySelector(".petHunger").innerText ="Hunger: " + element.virtualPet.hunger;
+        element.petContainer.querySelector(".petThirst").innerText = "Thirst: " + element.virtualPet.thirst;
+        element.petContainer.querySelector(".petHunger").innerText = "Hunger: " + element.virtualPet.hunger;
     });
 }
